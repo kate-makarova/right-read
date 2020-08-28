@@ -22,6 +22,10 @@ Route::group(['prefix' => 'static'], function () {
     Route::get('about', 'StaticController@about');
 });
 
+Route::group(['prefix' => 'word'], function () {
+    Route::post('add/{word}', 'WordController@add');
+});
+
 Route::get('texts', 'TextController@index');
 Route::group(['prefix' => 'text'], function () {
     Route::post('add', 'TextController@add');

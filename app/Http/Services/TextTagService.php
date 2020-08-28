@@ -18,6 +18,8 @@ class TextTagService
         $words = self::textSplit($text);
         $words= array_map('strtolower', $words);
         $uniqueWords = array_unique($words);
+        $empty = array_search('', $uniqueWords);
+        unset($uniqueWords[$empty]);
         $known = self::getKnownWords($uniqueWords);
 
         $pattern = [];
@@ -31,17 +33,17 @@ class TextTagService
             $replacement[$uniqueWord] = $tag;
         }
         $text = preg_replace_callback($pattern, function($matches)use($replacement) {
-            return '<'.$replacement[strtolower($matches[0])].'>' . $matches[0] . '<~!~>';
+            return '<'.$replacement[strtolower($matches[0])].' word="' . $matches[0] . '"><~!~>';
         }, $text) ;
 
         $pattern = ['~!~', '~!!~', '~!!!~'];
         $replacement = [
-            '/span',
-            'span class="text-tag" data-tag="known"',
-            'span class="text-tag" data-tag="unknown" v-on:click="addKnownWord"'];
+            '/WordTag',
+            'WordTag tag="known"',
+            'WordTag tag="unknown"'];
 
         $text = str_replace($pattern, $replacement, $text);
-        return $text;
+        return '<div>'.$text.'</div>';
     }
 
     /**
