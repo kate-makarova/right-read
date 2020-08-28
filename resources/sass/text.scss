@@ -1,0 +1,14 @@
+span.text-tag {
+    border-bottom: {
+        style: dotted;
+        width: 1px;
+    }
+}
+
+span.text-tag[data-tag="unknown"] {
+    border-bottom-color: $red;
+}
+
+span.text-tag[data-tag="known"] {
+    border-bottom-color: $green;
+}
