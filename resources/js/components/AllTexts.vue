@@ -9,12 +9,11 @@
                             </router-link>
                         </h5>
 
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
-                            varius blandit.</p>
+                        <p class="mb-1">{{ text.blurb }}</p>
                         <small><a :href="text.direct_link">{{ text.site_name }}</a> {{ text.publication_date }}</small>
                     </div>
                     <div>
-                        <h3><span class="badge badge-secondary">25/50</span></h3>
+                        <h3><span class="badge badge-secondary">{{ text.known_words }}/{{ text.total_words }}</span></h3>
                     </div>
                 </div>
             </div>

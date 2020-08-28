@@ -32,4 +32,5 @@ Route::group(['prefix' => 'text'], function () {
     Route::get('edit/{id}', 'TextController@edit');
     Route::post('update/{id}', 'TextController@update');
     Route::get('view/{id}', 'TextController@view');
+    Route::get('process', 'TextController@process');
 });

@@ -1999,7 +1999,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37885,7 +37884,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "collapse navbar-collapse flex-grow-0" }, [
+    return _c("div", { staticClass: "collapse navbar-collapse flex-grow-1" }, [
       _c("h1", [_vm._v("Español")])
     ])
   },
@@ -38009,11 +38008,7 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("p", { staticClass: "mb-1" }, [
-                  _vm._v(
-                    "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus\n                        varius blandit."
-                  )
-                ]),
+                _c("p", { staticClass: "mb-1" }, [_vm._v(_vm._s(text.blurb))]),
                 _vm._v(" "),
                 _c("small", [
                   _c("a", { attrs: { href: text.direct_link } }, [
@@ -38023,7 +38018,15 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(0, true)
+              _c("div", [
+                _c("h3", [
+                  _c("span", { staticClass: "badge badge-secondary" }, [
+                    _vm._v(
+                      _vm._s(text.known_words) + "/" + _vm._s(text.total_words)
+                    )
+                  ])
+                ])
+              ])
             ])
           ]
         )
@@ -38032,18 +38035,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", [
-        _c("span", { staticClass: "badge badge-secondary" }, [_vm._v("25/50")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

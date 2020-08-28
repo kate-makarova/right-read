@@ -18,7 +18,7 @@ class Word extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'word';
+    protected $primaryKey = ['word', 'lang'];
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -46,5 +46,7 @@ class Word extends Model
      *
      * @var string
      */
-    protected $dateFormat = 'U';
+    protected $dateFormat = 'Y-m-d h-i-s';
+
+    public $fillable = ['word', 'lang'];
 }

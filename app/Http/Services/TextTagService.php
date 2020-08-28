@@ -11,15 +11,11 @@ class TextTagService
      * Add known/unknown tags to every word in the text.
      *
      * @param string $text A text to tag.
-     * @return string The same text, tagged.
+     * @return array Returns the tagged text, number of unique words, number of known words.
      */
-    public static function tagText(string $text): string
+    public static function tagText(string $text): array
     {
-        $words = self::textSplit($text);
-        $words= array_map('strtolower', $words);
-        $uniqueWords = array_unique($words);
-        $empty = array_search('', $uniqueWords);
-        unset($uniqueWords[$empty]);
+        $uniqueWords = self::getUniqueWords($text);
         $known = self::getKnownWords($uniqueWords);
 
         $pattern = [];
@@ -43,7 +39,11 @@ class TextTagService
             'WordTag tag="unknown"'];
 
         $text = str_replace($pattern, $replacement, $text);
-        return '<div>'.$text.'</div>';
+        return [
+            'text' => '<div>'.$text.'</div>',
+            'total_words' => count($uniqueWords),
+            'known_words' => count($known)
+            ];
     }
 
     /**
@@ -69,5 +69,15 @@ class TextTagService
     protected static function textSplit(string $str)
     {
         return preg_split('~[^\p{L}\p{N}\']+~u',$str);
+    }
+
+    public static function getUniqueWords($text)
+    {
+        $words = self::textSplit($text);
+        $words= array_map('strtolower', $words);
+        $uniqueWords = array_unique($words);
+        $empty = array_search('', $uniqueWords);
+        unset($uniqueWords[$empty]);
+        return  $uniqueWords;
     }
 }

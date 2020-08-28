@@ -46,5 +46,14 @@ class Text extends Model
      *
      * @var string
      */
-    protected $dateFormat = 'U';
+    protected $dateFormat = 'Y-m-d h-i-s';
+
+    public $fillable = ['text_title',
+        'text_content',
+        'publication_date',
+        'site_name',
+        'direct_link',
+        'lang',
+        'blurb',
+        'total_words'];
 }
