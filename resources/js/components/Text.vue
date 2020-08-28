@@ -22,11 +22,11 @@ export default {
             });
     },
     methods: {
-        addKnownWord(word) {
+        addKnownWord: function(event) {
             this.axios
-                .post(`/api/word/add/${word}`)
+                .post(`/api/word/add/${event.target.content}`)
                 .then(response => {
-                    console.log('added');
+                    console.log(event.target.content);
                 });
         }
     }
