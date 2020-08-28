@@ -1,39 +1,25 @@
 <template>
     <div>
-        <h3 class="text-center">All Texts</h3><br/>
+        <div class="list-group">
+            <div v-for="text in texts" :key="text.id" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <div>
+                        <h5 class="mb-1">
+                            <router-link :to="{name: 'view', params: { id: text.id }}">{{ text.text_title }}
+                            </router-link>
+                        </h5>
 
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Site</th>
-                <th>Date</th>
-                <th>Title</th>
-                <th>Link</th>
-                <th>Known Words</th>
-                <th>Unknown Words</th>
-                <th>Status</th>
-                <td>Actions</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="text in texts" :key="text.id">
-                <td>{{ text.site_name }}</td>
-                <td>{{ text.publication_date }}</td>
-                <td><router-link :to="{name: 'view', params: { id: text.id }}">{{ text.text_title }}</router-link></td>
-                <td>{{ text.direct_link }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <router-link :to="{name: 'edit', params: { id: text.id }}" class="btn btn-primary">Edit
-                        </router-link>
-                        <button class="btn btn-danger" @click="deleteBook(text.id)">Delete</button>
+                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <small><a :href="text.direct_link">{{ text.site_name }}</a> {{ text.publication_date }}</small>
                     </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    <div>
+                        <h3><span class="badge badge-secondary">25/50</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 

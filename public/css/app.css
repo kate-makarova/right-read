@@ -10917,3 +10917,57 @@ span.text-tag[data-tag=known] {
   border-bottom-color: #38c172;
 }
 
+.bd-footer {
+  font-size: 0.875rem;
+  text-align: center;
+  background-color: #f7f7f7;
+}
+
+.bd-footer a {
+  font-weight: 600;
+  color: #495057;
+}
+
+.bd-footer a:hover,
+.bd-footer a:focus {
+  color: #3490dc;
+}
+
+.bd-footer p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .bd-footer {
+    text-align: left;
+  }
+}
+
+.bd-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.bd-footer-links li {
+  display: inline-block;
+}
+
+.bd-footer-links li + li {
+  margin-left: 1rem;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-container {
+  margin-top: 2em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+

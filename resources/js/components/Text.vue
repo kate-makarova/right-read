@@ -25,15 +25,6 @@ export default {
             .then(response => {
                 this.text = response.data;
             });
-    },
-    methods: {
-        addKnownWord: function(event) {
-            this.axios
-                .post(`/api/word/add/${event.target.content}`)
-                .then(response => {
-                    console.log(event.target.content);
-                });
-        }
     }
 }
 

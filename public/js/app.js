@@ -1928,6 +1928,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1941,20 +1975,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2115,13 +2135,6 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get("/api/text/view/".concat(this.$route.params.id)).then(function (response) {
       _this.text = response.data;
     });
-  },
-  methods: {
-    addKnownWord: function addKnownWord(event) {
-      this.axios.post("/api/word/add/".concat(event.target.content)).then(function (response) {
-        console.log(event.target.content);
-      });
-    }
   }
 });
 
@@ -37762,45 +37775,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "nav",
-        { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-        [
-          _c("div", { staticClass: "collapse navbar-collapse" }, [
-            _c(
-              "div",
-              { staticClass: "navbar-nav" },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "nav-item nav-link", attrs: { to: "/" } },
-                  [_vm._v("Home")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "nav-item nav-link", attrs: { to: "/about" } },
-                  [_vm._v("About")]
-                )
-              ],
-              1
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+  return _c("div", { staticClass: "wrapper" }, [
+    _c(
+      "nav",
+      {
+        staticClass: "navbar navbar-expand-lg navbar-light bg-light sticky-top"
+      },
+      [
+        _c("router-link", { staticClass: "navbar-brand", attrs: { to: "/" } }, [
+          _c("img", {
+            staticStyle: { width: "65px" },
+            attrs: { src: "/image/easy-read.png", alt: "image" }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "nav-item nav-link", attrs: { to: "/" } },
+                    [_vm._v("Home")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-item nav-link",
+                      attrs: { to: "/about" }
+                    },
+                    [_vm._v("About")]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2)
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container", attrs: { id: "content-container" } },
+      [_c("router-view")],
+      1
+    ),
+    _vm._v(" "),
+    _c("footer", { staticClass: "bd-footer text-muted" }, [
+      _c("div", { staticClass: "container-fluid p-3 p-md-5" }, [
+        _c("ul", { staticClass: "bd-footer-links" }, [
+          _c(
+            "li",
+            [_c("router-link", { attrs: { to: "/about" } }, [_vm._v("About")])],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("(c) 2020")])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -37808,24 +37866,93 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "button",
       {
-        staticClass: "text-center",
-        staticStyle: { margin: "20px 0px 20px 0px" }
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
       },
-      [
-        _c(
-          "a",
-          { attrs: { href: "https://www.mynotepaper.com/", target: "_blank" } },
-          [_c("img", { attrs: { src: "https://i.imgur.com/hHZjfUq.png" } })]
-        ),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-secondary" }, [
-          _vm._v("Laravel & Vue CRUD Single Page Application (SPA) Tutorial")
-        ])
-      ]
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "collapse navbar-collapse flex-grow-0" }, [
+      _c("h1", [_vm._v("Español")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "collapse navbar-collapse flex-grow-0" }, [
+      _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+        _c("li", { staticClass: "nav-item dropdown" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link dropdown-toggle",
+              attrs: {
+                href: "#",
+                id: "navbarDropdown",
+                role: "button",
+                "data-toggle": "dropdown",
+                "aria-haspopup": "true",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("\n                    User menu\n                ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dropdown-menu",
+              attrs: { "aria-labelledby": "navbarDropdown" }
+            },
+            [
+              _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+                _vm._v("Laguages")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+                _vm._v("Bookmarks")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+                _vm._v("History")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "dropdown-divider" }),
+              _vm._v(" "),
+              _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+                _vm._v("Exit")
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { attrs: { href: "https://github.com/kate-makarova/text-match" } },
+        [_vm._v("GitHub")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -37850,75 +37977,59 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "text-center" }, [_vm._v("All Texts")]),
-    _c("br"),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.texts, function(text) {
-          return _c("tr", { key: text.id }, [
-            _c("td", [_vm._v(_vm._s(text.site_name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(text.publication_date))]),
-            _vm._v(" "),
-            _c(
-              "td",
-              [
+    _c(
+      "div",
+      { staticClass: "list-group" },
+      _vm._l(_vm.texts, function(text) {
+        return _c(
+          "div",
+          {
+            key: text.id,
+            staticClass: "list-group-item list-group-item-action"
+          },
+          [
+            _c("div", { staticClass: "d-flex w-100 justify-content-between" }, [
+              _c("div", [
                 _c(
-                  "router-link",
-                  { attrs: { to: { name: "view", params: { id: text.id } } } },
-                  [_vm._v(_vm._s(text.text_title))]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(text.direct_link))]),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "btn-group", attrs: { role: "group" } },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { to: { name: "edit", params: { id: text.id } } }
-                    },
-                    [_vm._v("Edit\n                    ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger",
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteBook(text.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Delete")]
+                  "h5",
+                  { staticClass: "mb-1" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: { to: { name: "view", params: { id: text.id } } }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(text.text_title) + "\n                        "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "mb-1" }, [
+                  _vm._v(
+                    "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus\n                        varius blandit."
                   )
-                ],
-                1
-              )
+                ]),
+                _vm._v(" "),
+                _c("small", [
+                  _c("a", { attrs: { href: text.direct_link } }, [
+                    _vm._v(_vm._s(text.site_name))
+                  ]),
+                  _vm._v(" " + _vm._s(text.publication_date))
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0, true)
             ])
-          ])
-        }),
-        0
-      )
-    ])
+          ]
+        )
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = [
@@ -37926,23 +38037,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Site")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Link")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Known Words")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Unknown Words")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("Actions")])
+    return _c("div", [
+      _c("h3", [
+        _c("span", { staticClass: "badge badge-secondary" }, [_vm._v("25/50")])
       ])
     ])
   }
