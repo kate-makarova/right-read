@@ -6,24 +6,36 @@ namespace App\Http\Controllers;
 use App\Http\Services\TextTagService;
 use App\Text;
 use App\Word;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
 class TextController extends Controller
 {
     public function index()
     {
-        $books = Text::all()->toArray();
-        return response()->json(array_reverse($books));
+        $texts = Text::all()->toArray();
+
+        foreach($texts as &$text)
+        {
+            //todo: optimize the request
+            $known = DB::table('word_text')
+            ->join('word_user', 'word_text.word', '=', 'word_user.word')
+            ->where('word_text.text_id', $text['id'])
+            ->count('*');
+            $text['known_words'] = $known;
+            $text['blurb'] .= '...';
+        }
+
+        return response()->json(array_reverse($texts));
     }
 
     public function view($id, TextTagService $tagService)
     {
         $text = Text::find($id);
         $tagged = $tagService::tagText($text->text_content);
-        $text->text_content = $tagged['text'];
+        $text->text_content = nl2br($tagged['text']);
         $text->total_words = $tagged['total_words'];
         $text->known_words = $tagged['known_words'];
+
         return response()->json($text);
     }
 

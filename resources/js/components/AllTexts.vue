@@ -31,20 +31,10 @@ export default {
     },
     created() {
         this.axios
-            .get('/api/texts')
+            .get('/texts')
             .then(response => {
                 this.texts = response.data;
             });
-    },
-    methods: {
-        deleteBook(id) {
-            this.axios
-                .delete(`/api/text/delete/${id}`)
-                .then(response => {
-                    let i = this.texts.map(item => item.id).indexOf(id); // find index of your object
-                    this.texts.splice(i, 1)
-                });
-        }
     }
 }
 </script>

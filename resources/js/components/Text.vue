@@ -21,7 +21,7 @@ export default {
     },
     created() {
         this.axios
-            .get(`/api/text/view/${this.$route.params.id}`)
+            .get(`/text/view/${this.$route.params.id}`)
             .then(response => {
                 this.text = response.data;
             });

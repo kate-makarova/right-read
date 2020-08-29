@@ -4,6 +4,7 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class TextTagService
 {
@@ -54,7 +55,10 @@ class TextTagService
      */
     public static function getKnownWords(array $words): array
     {
-        $result = DB::table('words')->whereIn('word', $words)->pluck('word')->all();
+        $result = DB::table('word_user')
+            ->whereIn('word', $words)
+            ->where('user_id', $user = Auth::user()->id)
+            ->pluck('word')->all();
         if(!is_array($result))
             return (array)$result;
         return $result;

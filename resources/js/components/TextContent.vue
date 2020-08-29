@@ -20,9 +20,16 @@ export default {
             methods: {
                 addKnownWord: function (event) {
                     this.axios
-                        .post(`/api/word/add/${event.target.innerHTML}`)
+                        .post(`/word/add/${event.target.innerHTML}`)
                         .then(response => {
-                            console.log(event.target.innerHTML);
+                            console.log(response.data);
+
+                            Array.from(document.querySelectorAll('.text-tag'))
+                                .filter(el => el.textContent === event.target.innerHTML)
+                                .forEach(function(el) {
+                                    el.setAttribute('data-tag', 'known');
+                                });
+
                         });
                 }
             },

@@ -1095,7 +1095,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     request: function (req, token) {
-        console.log('request ' + token);
         this.http.setHeaders.call(this, req, {
             Authorization: 'Bearer ' + token
         });
@@ -1104,8 +1103,6 @@ __webpack_require__.r(__webpack_exports__);
     response: function (res) {
         var headers = this.http.getHeaders.call(this, res),
             token   = headers.Authorization || headers.authorization;
-
-        console.log('response ' + headers);
 
         if (token) {
             token = token.split(/Bearer:?\s?/i);
@@ -3188,23 +3185,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('/api/texts').then(function (response) {
+    this.axios.get('/texts').then(function (response) {
       _this.texts = response.data;
     });
-  },
-  methods: {
-    deleteBook: function deleteBook(id) {
-      var _this2 = this;
-
-      this.axios["delete"]("/api/text/delete/".concat(id)).then(function (response) {
-        var i = _this2.texts.map(function (item) {
-          return item.id;
-        }).indexOf(id); // find index of your object
-
-
-        _this2.texts.splice(i, 1);
-      });
-    }
   }
 });
 
@@ -3484,7 +3467,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get("/api/text/view/".concat(this.$route.params.id)).then(function (response) {
+    this.axios.get("/text/view/".concat(this.$route.params.id)).then(function (response) {
       _this.text = response.data;
     });
   }
@@ -3520,8 +3503,13 @@ __webpack_require__.r(__webpack_exports__);
       props: ['word', 'tag'],
       methods: {
         addKnownWord: function addKnownWord(event) {
-          this.axios.post("/api/word/add/".concat(event.target.innerHTML)).then(function (response) {
-            console.log(event.target.innerHTML);
+          this.axios.post("/word/add/".concat(event.target.innerHTML)).then(function (response) {
+            console.log(response.data);
+            Array.from(document.querySelectorAll('.text-tag')).filter(function (el) {
+              return el.textContent === event.target.innerHTML;
+            }).forEach(function (el) {
+              el.setAttribute('data-tag', 'known');
+            });
           });
         }
       }
