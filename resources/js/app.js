@@ -50,6 +50,7 @@ axios.interceptors.response.use(function (response) {
     console.log(response.headers);
     const newtoken = response.headers.authorization;
     if (newtoken) {
+        console.log(newtoken)
         localStorage.setItem('auth_token', newtoken)
     }
     return response

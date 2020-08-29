@@ -60,7 +60,7 @@ export default {
             user: false
         }
     },
-    created() {
+    updated() {
         this.user = localStorage.getItem('auth_stay_signed_in') || false;
     },
     methods: {

@@ -3144,7 +3144,7 @@ __webpack_require__.r(__webpack_exports__);
       user: false
     };
   },
-  created: function created() {
+  updated: function updated() {
     this.user = localStorage.getItem('auth_stay_signed_in') || false;
   },
   methods: {
@@ -55470,6 +55470,7 @@ axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(function 
   var newtoken = response.headers.authorization;
 
   if (newtoken) {
+    console.log(newtoken);
     localStorage.setItem('auth_token', newtoken);
   }
 
@@ -56087,17 +56088,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
   history: true,
   mode: 'history',
   routes: routes
-});
-router.beforeEach(function (to, from, next) {
-  if (!to.meta.auth) {
-    next();
-  } else if (store.getters["user/isAuthenticated"]) {
-    next();
-  } else {
-    next({
-      path: "/login"
-    });
-  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
