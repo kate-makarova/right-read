@@ -22,7 +22,7 @@
                             <a class="dropdown-item" href="#">Bookmarks</a>
                             <a class="dropdown-item" href="#">History</a>
                             <div class="dropdown-divider"></div>
-                            <a class="nav-link" href="#" @click.prevent="$auth.logout()">Logout</a>
+                            <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -61,7 +61,24 @@ export default {
         }
     },
     created() {
-        this.user = this.$auth.user || false;
+        this.user = localStorage.getItem('auth_stay_signed_in') || false;
+    },
+    methods: {
+        logout: function() {
+            this.$auth.logout().then(response => {
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('auth_stay_signed_in');
+
+                // remove any other authenticated user data you put in local storage
+
+                // Assuming that you set this earlier for subsequent Ajax request at some point like so:
+                // axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth_token ;
+                delete axios.defaults.headers.common['Authorization'];
+
+                // If using 'vue-router' redirect to login page
+                this.$router.go('/');
+            })
+        }
     }
 }
 </script>

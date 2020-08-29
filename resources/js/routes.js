@@ -1,6 +1,5 @@
 import AllTexts from './components/AllTexts.vue';
 import Static from "./components/Static";
-import Text from "./components/Text";
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
 import VueRouter from 'vue-router';

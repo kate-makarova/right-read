@@ -3145,7 +3145,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.user = this.$auth.user || false;
+    this.user = localStorage.getItem('auth_stay_signed_in') || false;
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      this.$auth.logout().then(function (response) {
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_stay_signed_in'); // remove any other authenticated user data you put in local storage
+        // Assuming that you set this earlier for subsequent Ajax request at some point like so:
+        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + auth_token ;
+
+        delete axios.defaults.headers.common['Authorization']; // If using 'vue-router' redirect to login page
+
+        _this.$router.go('/');
+      });
+    }
   }
 });
 
@@ -3393,18 +3409,20 @@ __webpack_require__.r(__webpack_exports__);
         },
         success: function success() {
           // handle redirection
+          console.log('success');
           app.success = true;
-          var redirectTo = 'home';
-          this.$router.push({
-            name: redirectTo
-          });
         },
         error: function error() {
+          console.log('error');
+          console.log(res.response);
           app.has_error = true;
           app.error = res.response.data.error;
         },
         rememberMe: true,
-        fetchUser: true
+        fetchUser: true,
+        redirect: {
+          path: redirect ? redirect.from.path : '/'
+        }
       });
     }
   }
@@ -39303,7 +39321,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                return _vm.$auth.logout()
+                                return _vm.logout($event)
                               }
                             }
                           },
@@ -55445,6 +55463,29 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // Set Vue authenti
 
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
 axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "".concat("http://text-match", "/api");
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(function (response) {
+  // Do something before request is sent
+  console.log('response');
+  console.log(response.headers);
+  var newtoken = response.headers.authorization;
+
+  if (newtoken) {
+    localStorage.setItem('auth_token', newtoken);
+  }
+
+  return response;
+}, function (error) {
+  switch (error.response.status) {
+    case 401:
+      store.commit('destroyToken');
+      break;
+
+    default:
+      console.log(error.response);
+  }
+
+  return Promise.reject(error);
+});
 Vue.use(_websanova_vue_auth__WEBPACK_IMPORTED_MODULE_5__["default"], _auth__WEBPACK_IMPORTED_MODULE_4__["default"]);
 var app = new Vue({
   el: '#app',
@@ -55996,12 +56037,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AllTexts_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/AllTexts.vue */ "./resources/js/components/AllTexts.vue");
 /* harmony import */ var _components_Static__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Static */ "./resources/js/components/Static.vue");
-!(function webpackMissingModule() { var e = new Error("Cannot find module './components/Text'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _components_Register_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Register.vue */ "./resources/js/components/Register.vue");
-/* harmony import */ var _components_Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Login.vue */ "./resources/js/components/Login.vue");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.vue");
-
+/* harmony import */ var _components_Register_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Register.vue */ "./resources/js/components/Register.vue");
+/* harmony import */ var _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Login.vue */ "./resources/js/components/Login.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.vue");
 
 
 
@@ -56011,7 +56050,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [{
   name: 'home',
   path: '/',
-  component: _components_Index__WEBPACK_IMPORTED_MODULE_6__["default"],
+  component: _components_Index__WEBPACK_IMPORTED_MODULE_5__["default"],
   meta: {
     auth: undefined
   }
@@ -56032,19 +56071,19 @@ var routes = [{
 }, {
   path: '/register',
   name: 'register',
-  component: _components_Register_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  component: _components_Register_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   meta: {
     auth: false
   }
 }, {
   path: '/login',
   name: 'login',
-  component: _components_Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+  component: _components_Login_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   meta: {
     auth: false
   }
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
   history: true,
   mode: 'history',
   routes: routes

@@ -48,21 +48,25 @@ export default {
 
             this.$auth.login({
                 data: {
-                     email: app.email,
-                     password: app.password
+                    email: app.email,
+                    password: app.password
                 },
-                success: function() {
+                success: function () {
                     // handle redirection
+                    console.log('success');
                     app.success = true
-                    const redirectTo = 'home'
-                    this.$router.push({name: redirectTo})
                 },
-                error: function() {
+                error: function () {
+                    console.log('error');
+                    console.log(res.response);
                     app.has_error = true
                     app.error = res.response.data.error
                 },
                 rememberMe: true,
-                fetchUser: true
+                fetchUser: true,
+                redirect: {
+                    path: redirect ? redirect.from.path : '/'
+                },
             })
         }
     }

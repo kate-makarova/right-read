@@ -43,6 +43,27 @@ Vue.use(VueRouter)
 // Set Vue authentication
 Vue.use(VueAxios, axios)
 axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
+
+axios.interceptors.response.use(function (response) {
+    // Do something before request is sent
+    console.log('response');
+    console.log(response.headers);
+    const newtoken = response.headers.authorization;
+    if (newtoken) {
+        localStorage.setItem('auth_token', newtoken)
+    }
+    return response
+}, function (error) {
+    switch (error.response.status) {
+        case 401:
+            store.commit('destroyToken')
+            break
+        default:
+            console.log(error.response)
+    }
+    return Promise.reject(error)
+})
+
 Vue.use(VueAuth, auth)
 
 const app = new Vue({
