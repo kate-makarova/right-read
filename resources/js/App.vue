@@ -24,11 +24,13 @@
                         User menu
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <router-link :to="{ name: 'login' }">Login</router-link>
+                        <router-link :to="{ name: 'register' }">Register</router-link>
                         <a class="dropdown-item" href="#">Laguages</a>
                         <a class="dropdown-item" href="#">Bookmarks</a>
                         <a class="dropdown-item" href="#">History</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Exit</a>
+                        <a class="nav-link" href="#" @click.prevent="$auth.logout()">Logout</a>
                     </div>
                 </li>
                 </ul>

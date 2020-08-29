@@ -12,7 +12,9 @@ import App from './App.vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-import {routes} from './routes';
+import auth from './auth'
+import VueAuth from '@websanova/vue-auth'
+import router from './routes'
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,13 +35,15 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-});
+// Set Vue globally
+window.Vue = Vue
+// Set Vue router
+Vue.router = router
+Vue.use(VueRouter)
+// Set Vue authentication
+Vue.use(VueAxios, axios)
+axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
+Vue.use(VueAuth, auth)
 
 const app = new Vue({
     el: '#app',
