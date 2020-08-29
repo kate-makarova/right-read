@@ -49,7 +49,6 @@ class Text extends Model
     protected $dateFormat = 'Y-m-d h-i-s';
 
     public $fillable = ['text_title',
-        'text_content',
         'publication_date',
         'site_name',
         'direct_link',

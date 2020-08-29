@@ -39,17 +39,19 @@
     }
 }
 
-.wrapper {
-    position: relative;
-    min-height: 100vh;
-}
-
 #content-container {
-    margin-top: 2em;
+    flex-grow: 1;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+html, body {
+    height: 100%;
+}
+
+
+

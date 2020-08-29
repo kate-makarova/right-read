@@ -5,12 +5,11 @@
                 <div class="d-flex w-100 justify-content-between">
                     <div>
                         <h5 class="mb-1">
-                            <router-link :to="{name: 'view', params: { id: text.id }}">{{ text.text_title }}
-                            </router-link>
+                            <a :href="text.direct_link">{{ text.text_title }}</a>
                         </h5>
 
                         <p class="mb-1">{{ text.blurb }}</p>
-                        <small><a :href="text.direct_link">{{ text.site_name }}</a> {{ text.publication_date }}</small>
+                        <small>{{ text.site_name }} {{ text.publication_date }}</small>
                     </div>
                     <div>
                         <h3><span class="badge badge-secondary">{{ text.known_words }}/{{ text.total_words }}</span></h3>

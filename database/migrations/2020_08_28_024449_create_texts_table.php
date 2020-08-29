@@ -16,7 +16,6 @@ class CreateTextsTable extends Migration
         Schema::create('texts', function (Blueprint $table) {
             $table->id();
             $table->string('text_title', 1024);
-            $table->text('text_content');
             $table->dateTime('publication_date');
             $table->string('site_name', 1024);
             $table->string('direct_link', 256);
