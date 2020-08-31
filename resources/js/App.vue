@@ -13,7 +13,7 @@
                     </li>
                     <li class="nav-item mx-0 mx-lg-1"><router-link v-if="!user" :to="{ name: 'register' }" class="nav-link py-3 px-0 px-lg-3 rounded">REGISTER</router-link>
                     </li>
-                    <li class="nav-item mx-0 mx-lg-1 dropdown">
+                    <li v-if="user"  class="nav-item mx-0 mx-lg-1 dropdown">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             USER MENU
                         </a>

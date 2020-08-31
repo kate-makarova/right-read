@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\TextTagService;
+use Auth;
 use App\Text;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +19,7 @@ class TextController extends Controller
             $known = DB::table('word_text')
             ->join('word_user', 'word_text.word', '=', 'word_user.word')
             ->where('word_text.text_id', $text['id'])
+            ->where('word_user.user_id', Auth::user()->id)
             ->count('*');
 
             $text['known_words'] = $known;

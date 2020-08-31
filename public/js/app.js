@@ -3558,9 +3558,6 @@ __webpack_require__.r(__webpack_exports__);
       content: ''
     };
   },
-  // mounted() {
-  //     this.load()
-  // },
   methods: {
     load: function load() {
       var _this = this;
@@ -3572,12 +3569,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-    // called when the route that renders this component has changed,
-    // but this component is reused in the new route.
-    // For example, for a route with dynamic params `/foo/:id`, when we
-    // navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
-    // will be reused, and this hook will be called when that happens.
-    // has access to `this` component instance.
     next(function (vm) {
       vm.load();
     });
@@ -39266,54 +39257,60 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c("li", { staticClass: "nav-item mx-0 mx-lg-1 dropdown" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle",
-                        attrs: {
-                          href: "#",
-                          id: "navbarDropdown",
-                          role: "button",
-                          "data-toggle": "dropdown",
-                          "aria-haspopup": "true",
-                          "aria-expanded": "false"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            USER MENU\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "dropdown-menu",
-                        attrs: { "aria-labelledby": "navbarDropdown" }
-                      },
-                      [
-                        _c("div", { staticClass: "dropdown-divider" }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.logout($event)
+                  _vm.user
+                    ? _c(
+                        "li",
+                        { staticClass: "nav-item mx-0 mx-lg-1 dropdown" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle",
+                              attrs: {
+                                href: "#",
+                                id: "navbarDropdown",
+                                role: "button",
+                                "data-toggle": "dropdown",
+                                "aria-haspopup": "true",
+                                "aria-expanded": "false"
                               }
-                            }
-                          },
-                          [_vm._v("Logout")]
-                        )
-                      ]
-                    )
-                  ])
+                            },
+                            [
+                              _vm._v(
+                                "\n                            USER MENU\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "dropdown-menu",
+                              attrs: { "aria-labelledby": "navbarDropdown" }
+                            },
+                            [
+                              _c("div", { staticClass: "dropdown-divider" }),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.logout($event)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Logout")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e()
                 ])
               ]
             )
@@ -39387,7 +39384,7 @@ var staticRenderFns = [
     return _c("li", [
       _c(
         "a",
-        { attrs: { href: "https://github.com/kate-makarova/text-match" } },
+        { attrs: { href: "https://github.com/kate-makarova/right-read" } },
         [_vm._v("GitHub")]
       )
     ])
