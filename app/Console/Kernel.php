@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\ScrapeSites;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(new ScrapeSitesTask)->daily();
+        $schedule->job(new ScrapeSites())->daily();
     }
 
     /**

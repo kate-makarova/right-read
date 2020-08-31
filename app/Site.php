@@ -42,8 +42,9 @@ class Site extends Model
     public $timestamps = false;
 
 
-    public $fillable = ['index_link',
-        'site_name',
-        'cofig',
-        ];
+    public $fillable = ['site_name',
+        'index_link',
+        'config',
+        'scraper',
+        'lang'];
 }

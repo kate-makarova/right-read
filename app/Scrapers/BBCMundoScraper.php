@@ -1,13 +1,15 @@
 <?php
 
 
-namespace App\Http\Services;
+namespace App\Scrapers;
 
 use PHPHtmlParser\Dom;
 
-class BBCMundoScraper
+class BBCMundoScraper extends Scraper
 {
-    public function scrapeWebPage($url = null): array
+
+
+    public function scrapeWebPage(string $url): array
     {
         $dom = new Dom;
         $dom->loadFromUrl($url);

@@ -47,4 +47,4 @@ Route::group(['prefix' => 'text'], function () {
 //    Route::get('process', 'TextController@process');
 });
 
-Route::get('scrape', 'ScrapeController@scrape');
+Route::get('test', 'TestController@testScraperJob');

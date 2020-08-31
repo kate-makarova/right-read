@@ -18,6 +18,8 @@ class Sites extends Migration
             $table->string('site_name', 128);
             $table->string('index_link', 128);
             $table->text('config');
+            $table->string('scraper', 128);
+            $table->string('lang', 128);
         });
     }
 
