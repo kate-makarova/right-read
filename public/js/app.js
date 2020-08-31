@@ -3203,6 +3203,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3556,12 +3558,28 @@ __webpack_require__.r(__webpack_exports__);
       content: ''
     };
   },
-  created: function created() {
-    var _this = this;
+  // mounted() {
+  //     this.load()
+  // },
+  methods: {
+    load: function load() {
+      var _this = this;
 
-    this.axios.get("/api/static".concat(window.location.pathname)).then(function (response) {
-      _this.title = response.data.title;
-      _this.content = response.data.content;
+      this.axios.get("/static".concat(window.location.pathname)).then(function (response) {
+        _this.title = response.data.title;
+        _this.content = response.data.content;
+      });
+    }
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    // called when the route that renders this component has changed,
+    // but this component is reused in the new route.
+    // For example, for a route with dynamic params `/foo/:id`, when we
+    // navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
+    // will be reused, and this hook will be called when that happens.
+    // has access to `this` component instance.
+    next(function (vm) {
+      vm.load();
     });
   }
 });
@@ -39198,22 +39216,6 @@ var render = function() {
                     "li",
                     { staticClass: "nav-item mx-0 mx-lg-1" },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "nav-link py-3 px-0 px-lg-3 rounded",
-                          attrs: { to: "/download" }
-                        },
-                        [_vm._v("DOWNLOAD")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    { staticClass: "nav-item mx-0 mx-lg-1" },
-                    [
                       _vm.user
                         ? _c(
                             "router-link",
@@ -39281,7 +39283,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        USER MENU\n                    "
+                          "\n                            USER MENU\n                        "
                         )
                       ]
                     ),
@@ -39293,39 +39295,12 @@ var render = function() {
                         attrs: { "aria-labelledby": "navbarDropdown" }
                       },
                       [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("Laguages")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("Bookmarks")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("History")]
-                        ),
-                        _vm._v(" "),
                         _c("div", { staticClass: "dropdown-divider" }),
                         _vm._v(" "),
                         _c(
                           "a",
                           {
-                            staticClass: "nav-link",
+                            staticClass: "dropdown-item",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
@@ -39366,7 +39341,7 @@ var render = function() {
           _c(
             "li",
             [
-              _c("router-link", { attrs: { to: "/copyright" } }, [
+              _c("router-link", { attrs: { to: { name: "copyright" } } }, [
                 _vm._v("Concerning copyright")
               ])
             ],
@@ -39487,12 +39462,14 @@ var render = function() {
             staticClass: "list-group-item list-group-item-action"
           },
           [
-            _c("div", { staticClass: "d-flex w-100 justify-content-between" }, [
-              _c("div", [
+            _c("div", { staticClass: "d-flex w-100 justify-content-end" }, [
+              _c("div", { staticClass: "flex-grow-1" }, [
                 _c("h5", { staticClass: "mb-1" }, [
-                  _c("a", { attrs: { href: text.direct_link } }, [
-                    _vm._v(_vm._s(text.text_title))
-                  ])
+                  _c(
+                    "a",
+                    { attrs: { href: text.direct_link, target: "_blank" } },
+                    [_vm._v(_vm._s(text.text_title))]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("small", [
@@ -39502,21 +39479,37 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", [
-                _c("h3", [
-                  _c("span", { staticClass: "badge badge-secondary" }, [
-                    _vm._v(_vm._s(text.percentage))
+              _c(
+                "div",
+                {
+                  staticStyle: { "min-width": "120px", "text-align": "right" }
+                },
+                [
+                  _c("h3", [
+                    _c("span", { staticClass: "badge badge-secondary" }, [
+                      _vm._v(_vm._s(text.percentage) + "%")
+                    ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("h3", [
-                  _c("span", { staticClass: "badge badge-secondary" }, [
-                    _vm._v(
-                      _vm._s(text.known_words) + "/" + _vm._s(text.total_words)
-                    )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: { "min-width": "180px", "text-align": "right" }
+                },
+                [
+                  _c("h3", [
+                    _c("span", { staticClass: "badge badge-secondary" }, [
+                      _vm._v(
+                        _vm._s(text.known_words) +
+                          "/" +
+                          _vm._s(text.total_words)
+                      )
+                    ])
                   ])
-                ])
-              ])
+                ]
+              )
             ])
           ]
         )
@@ -57362,6 +57355,13 @@ var routes = [{
 }, {
   name: 'about',
   path: '/about',
+  component: _components_Static__WEBPACK_IMPORTED_MODULE_1__["default"],
+  meta: {
+    auth: undefined
+  }
+}, {
+  name: 'copyright',
+  path: '/copyright',
   component: _components_Static__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {
     auth: undefined

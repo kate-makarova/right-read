@@ -31,6 +31,14 @@ const routes = [
         }
     },
     {
+        name: 'copyright',
+        path: '/copyright',
+        component: Static,
+        meta: {
+            auth: undefined
+        }
+    },
+    {
         path: '/register',
         name: 'register',
         component: Register,

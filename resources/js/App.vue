@@ -5,8 +5,8 @@
             <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><router-link to="/download" class="nav-link py-3 px-0 px-lg-3 rounded">DOWNLOAD</router-link>
-                    </li>
+<!--                    <li class="nav-item mx-0 mx-lg-1"><router-link to="/download" class="nav-link py-3 px-0 px-lg-3 rounded">DOWNLOAD</router-link>-->
+<!--                    </li>-->
                     <li class="nav-item mx-0 mx-lg-1"><router-link v-if="user" :to="{ name: 'texts' }" class="nav-link py-3 px-0 px-lg-3 rounded">TEXTS</router-link>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1"><router-link v-if="!user" :to="{ name: 'login' }" class="nav-link py-3 px-0 px-lg-3 rounded">LOGIN</router-link>
@@ -18,11 +18,11 @@
                             USER MENU
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Laguages</a>
-                            <a class="dropdown-item" href="#">Bookmarks</a>
-                            <a class="dropdown-item" href="#">History</a>
+<!--                            <a class="dropdown-item" href="#">Laguages</a>-->
+<!--                            <a class="dropdown-item" href="#">Bookmarks</a>-->
+<!--                            <a class="dropdown-item" href="#">History</a>-->
                             <div class="dropdown-divider"></div>
-                            <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+                            <a class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -39,7 +39,7 @@
             <div class="container-fluid p-3">
                 <ul class="bd-footer-links">
                     <li><router-link :to="{ name: 'about' }">About</router-link></li>
-                    <li><router-link to="/copyright">Concerning copyright</router-link></li>
+                    <li><router-link :to="{ name: 'copyright' }">Concerning copyright</router-link></li>
                     <li><a href="https://github.com/kate-makarova/text-match">GitHub</a></li>
                 </ul>
             </div>

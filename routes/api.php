@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::group(['prefix' => 'static'], function () {
-    Route::get('about', 'StaticController@about');
-});
+
+Route::get('static/{name}', 'StaticController@static');
+
 
 Route::group(['prefix' => 'word'], function () {
     Route::post('add/{word}', 'WordController@add');

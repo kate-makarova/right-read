@@ -4,13 +4,17 @@
 namespace App\Http\Controllers;
 
 
+use App\StaticContent;
+
 class StaticController extends Controller
 {
-    public function about()
+    public function static($name)
     {
+        $content = StaticContent::where('name', $name)->first();
+
         return response()->json([
-            'title' => 'About this site',
-            'content' => 'Some content'
+            'title' => $content->text_title,
+            'content' => $content->text_content
         ]);
     }
 }

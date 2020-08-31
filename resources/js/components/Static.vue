@@ -14,13 +14,20 @@ export default {
             content: ''
         }
     },
-    created() {
-        this.axios
-            .get(`/api/static${window.location.pathname}`)
-            .then(response => {
-                this.title = response.data.title;
-                this.content = response.data.content;
-            });
+    methods: {
+        load() {
+            this.axios
+                .get(`/static${window.location.pathname}`)
+                .then(response => {
+                    this.title = response.data.title;
+                    this.content = response.data.content;
+                })
+        }
+    },
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+            vm.load()
+        })
     }
 }
 </script>
