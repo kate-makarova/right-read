@@ -15,6 +15,7 @@ import axios from 'axios';
 import auth from './auth'
 import VueAuth from '@websanova/vue-auth'
 import router from './routes'
+import Vuex from 'vuex'
 
 /**
  * The following block of code may be used to automatically register your
@@ -35,6 +36,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const LOGIN = "LOGIN";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGOUT = "LOGOUT";
+
+const store = new Vuex.Store({
+    state: {
+        isLoggedIn: !!localStorage.getItem('auth_stay_signed_in')
+    },
+    mutations: {
+        [LOGIN] (state) {
+            state.pending = true;
+        },
+        [LOGIN_SUCCESS] (state) {
+            state.isLoggedIn = true;
+            state.pending = false;
+        },
+        [LOGOUT](state) {
+            state.isLoggedIn = false;
+        }
+    }
+});
+
 // Set Vue globally
 window.Vue = Vue
 // Set Vue router
@@ -46,19 +69,20 @@ axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api`
 
 axios.interceptors.response.use(function (response) {
     // Do something before request is sent
-    console.log('response');
-    console.log(response.headers);
     const newtoken = response.headers.authorization;
     if (newtoken) {
-        console.log(newtoken)
         localStorage.setItem('auth_token', newtoken)
     }
     return response
 }, function (error) {
     switch (error.response.status) {
+        case 400:
         case 401:
-            store.commit('destroyToken')
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_token_default');
+            localStorage.removeItem('auth_stay_signed_in');
             break
+
         default:
             console.log(error.response)
     }
@@ -71,4 +95,5 @@ const app = new Vue({
     el: '#app',
     router: router,
     render: h => h(App),
+    store: store
 });

@@ -54,6 +54,10 @@
 </template>
 
 <script>
+const LOGIN = "LOGIN";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGOUT = "LOGOUT";
+
 export default {
     data() {
         return {
@@ -65,7 +69,9 @@ export default {
     },
     methods: {
         logout: function() {
+            const app = this;
             this.$auth.logout().then(response => {
+                app.$store.commit(LOGOUT);
                 localStorage.removeItem('auth_token');
                 localStorage.removeItem('auth_stay_signed_in');
 

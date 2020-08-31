@@ -3,12 +3,11 @@
 
 namespace App\Http\Services;
 
-use App\Text;
 use PHPHtmlParser\Dom;
 
 class BBCMundoScraper
 {
-    public function scrapeWebPage($url = null): Text
+    public function scrapeWebPage($url = null): array
     {
         $dom = new Dom;
         $dom->loadFromUrl($url);
@@ -20,17 +19,10 @@ class BBCMundoScraper
         $articleContainer = $this->findArticleContainer($container);
         $articleText = $articleContainer->text(true);
 
-        $date = new \DateTime('now');
-
-        $text = new Text([
-            'text_title' => $title,
-            'publication_date' => $date->format('Y-m-d h:i:s'),
-            'site_name' => 'BBC Mundo',
-            'direct_link' => $url,
-            'lang' => 'Spanish',
-            'blurb' => substr($articleText, 0, 255)
-        ]);
-        return $text;
+        return [
+            'title' => $title,
+            'text' => $articleText
+            ];
     }
 
     private function findHeader($dom)

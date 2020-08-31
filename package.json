@@ -21,12 +21,14 @@
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "vuex": "^3.5.1"
     },
     "dependencies": {
         "@websanova/vue-auth": "^3.3.1",
         "es6-promise": "^4.2.8",
         "vue-axios": "^2.1.5",
-        "vue-router": "^3.4.3"
+        "vue-router": "^3.4.3",
+        "vuex-persistedstate": "^3.1.0"
     }
 }

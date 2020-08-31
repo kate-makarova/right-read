@@ -27,6 +27,10 @@
     </div>
 </template>
 <script>
+const LOGIN = "LOGIN";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGOUT = "LOGOUT";
+
 export default {
     data() {
         return {
@@ -45,6 +49,7 @@ export default {
             // get the redirect object
             var redirect = this.$auth.redirect()
             var app = this
+            app.$store.commit(LOGIN);
 
             this.$auth.login({
                 data: {
@@ -55,6 +60,7 @@ export default {
                     // handle redirection
                     console.log('success');
                     app.success = true
+                    app.$store.commit(LOGIN_SUCCESS);
                 },
                 error: function () {
                     console.log('error');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTables extends Migration
+class StaticContent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class UpdateTables extends Migration
      */
     public function up()
     {
-        Schema::table('words', function (Blueprint $table) {
-            $table->string('language', 128);
-        });
-
-        Schema::table('texts', function (Blueprint $table) {
-            $table->string('language', 128);
-            $table->boolean('read')->default(false);
+        Schema::create('static_content', function (Blueprint $table) {
+            $table->string('name', 128);
+            $table->string('text_title', 1024);
+            $table->text('text_content');
+            $table->primary('name');
         });
     }
 

@@ -16,11 +16,20 @@ class ScrapeController extends Controller
     {
        // $url = 'https://www.bbc.com/mundo/vert-tra-53407240';
         $scraper = new BBCMundoScraper();
-        $text = $scraper->scrapeWebPage($url);
+        $textData = $scraper->scrapeWebPage($url);
 
-        $uniqueWords = $tagService::getUniqueWords($text);
+        $uniqueWords = $tagService::getUniqueWords($textData['text']);
 
-        $text->total_words = count($uniqueWords);
+        $date = new \DateTime('now');
+
+        $text = new Text([
+            'text_title' => $textData['title'],
+            'publication_date' => $date->format('Y-m-d h:i:s'),
+            'site_name' => 'BBC Mundo',
+            'direct_link' => $url,
+            'lang' => 'Spanish',
+            'total_words' => count($uniqueWords)
+        ]);
 
         $text->save();
         $id = $text->getKey();

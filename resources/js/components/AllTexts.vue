@@ -7,9 +7,10 @@
                         <h5 class="mb-1">
                             <a :href="text.direct_link">{{ text.text_title }}</a>
                         </h5>
-
-                        <p class="mb-1">{{ text.blurb }}</p>
                         <small>{{ text.site_name }} {{ text.publication_date }}</small>
+                    </div>
+                    <div>
+                        <h3><span class="badge badge-secondary">{{ text.percentage }}</span></h3>
                     </div>
                     <div>
                         <h3><span class="badge badge-secondary">{{ text.known_words }}/{{ text.total_words }}</span></h3>

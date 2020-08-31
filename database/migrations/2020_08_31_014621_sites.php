@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTables extends Migration
+class Sites extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class UpdateTables extends Migration
      */
     public function up()
     {
-        Schema::table('words', function (Blueprint $table) {
-            $table->string('language', 128);
-        });
-
-        Schema::table('texts', function (Blueprint $table) {
-            $table->string('language', 128);
-            $table->boolean('read')->default(false);
+        Schema::create('sites', function (Blueprint $table) {
+            $table->integer('id')->primary()->autoIncrement();
+            $table->string('site_name', 128);
+            $table->string('index_link', 128);
+            $table->text('config');
         });
     }
 

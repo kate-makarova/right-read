@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Text extends Model
+class Site extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'texts';
+    protected $table = 'sites';
 
     /**
      * The primary key associated with the table.
@@ -39,19 +39,11 @@ class Text extends Model
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
-    /**
-     * The storage format of the model's date columns.
-     *
-     * @var string
-     */
-    protected $dateFormat = 'Y-m-d h-i-s';
 
-    public $fillable = ['text_title',
-        'publication_date',
+    public $fillable = ['index_link',
         'site_name',
-        'direct_link',
-        'lang',
-        'total_words'];
+        'cofig',
+        ];
 }
