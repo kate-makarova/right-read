@@ -40,7 +40,7 @@
                 <ul class="bd-footer-links">
                     <li><router-link :to="{ name: 'about' }">About</router-link></li>
                     <li><router-link :to="{ name: 'copyright' }">Concerning copyright</router-link></li>
-                    <li><a href="https://github.com/kate-makarova/text-match">GitHub</a></li>
+                    <li><a href="https://github.com/kate-makarova/right-read">GitHub</a></li>
                 </ul>
             </div>
         </footer>
