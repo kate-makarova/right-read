@@ -3432,7 +3432,7 @@ var LOGOUT = "LOGOUT";
         rememberMe: true,
         fetchUser: true,
         redirect: {
-          path: redirect ? redirect.from.path : '/'
+          path: '/texts'
         }
       });
     }
@@ -56748,7 +56748,7 @@ Vue.router = _routes__WEBPACK_IMPORTED_MODULE_6__["default"];
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // Set Vue authentication
 
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios__WEBPACK_IMPORTED_MODULE_3___default.a);
-axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "".concat("http://text-match", "/api");
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.baseURL = "".concat("https://rightread.ca", "/api");
 axios__WEBPACK_IMPORTED_MODULE_3___default.a.interceptors.response.use(function (response) {
   // Do something before request is sent
   var newtoken = response.headers.authorization;

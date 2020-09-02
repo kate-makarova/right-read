@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('static/{name}', 'StaticController@static');
 
 
-Route::group(['prefix' => 'word'], function () {
-    Route::post('add/{word}', 'WordController@add');
+Route::group(['middleware' => 'jwt.auth', 'prefix' => 'word'], function () {
+    Route::get('add/{word}', 'WordController@add');
 });
 
 Route::post('auth/register', 'AuthController@register');

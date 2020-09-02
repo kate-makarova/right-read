@@ -71,7 +71,7 @@ export default {
                 rememberMe: true,
                 fetchUser: true,
                 redirect: {
-                    path: redirect ? redirect.from.path : '/'
+                    path: '/texts'
                 },
             })
         }
