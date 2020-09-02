@@ -4,12 +4,13 @@
 namespace App\Http\Controllers;
 
 
-use App\Jobs\ScrapeSites;
+
+use Illuminate\Support\Facades\Hash;
 
 class TestController extends Controller
 {
-    public function testScraperJob()
+    public function test()
     {
-        ScrapeSites::dispatch();
+        return response()->json(['This thing does' => 'nothing']);
     }
 }

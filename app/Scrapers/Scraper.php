@@ -59,6 +59,10 @@ abstract class Scraper
         $text->save();
         $id = $text->getKey();
 
+        DB::statement('INSERT INTO text_user
+        (text_id, user_id, known_words)
+        SELECT '.$id.', id, 0 from users');
+
         foreach($uniqueWords as $uniqueWord)
         {
             Word::firstOrCreate([
