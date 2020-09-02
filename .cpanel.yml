@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/user/public_html/
+    - export DEPLOYPATH=/home/rightrea/public_html/
     - /bin/cp -R images $DEPLOYPATH
