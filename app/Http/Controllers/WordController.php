@@ -27,6 +27,7 @@ class WordController extends Controller
             $date = new \DateTime('now');
             DB::table('word_user')->insert([
                 'word' => $word,
+                'indexed' => 0,
                 'user_id' => $user = Auth::user()->id,
                 'created_at' => $date->format('Y-m-d h:i:s')
             ]);

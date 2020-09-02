@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Http\Scrapers\Scraper;
 use App\Http\Services\TextTagService;
 use App\Site;
 use Illuminate\Bus\Queueable;
@@ -15,8 +14,6 @@ class ScrapeSites implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-
-
     /**
      * Create a new job instance.
      *
@@ -28,10 +25,9 @@ class ScrapeSites implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param TextTagService $tagService
      * @return void
      */
-    public function handle(TextTagService $tagService)
+    public function handle()
     {
         $sites = Site::all();
 

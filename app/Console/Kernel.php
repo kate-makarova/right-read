@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\ReIndexWordsUser;
 use App\Jobs\ScrapeSites;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->job(new ScrapeSites())->daily();
+        $schedule->job(new ReIndexWordsUser())->everyFiveMinutes();
     }
 
     /**
