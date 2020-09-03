@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.2",
         "paquettg/php-html-parser": "^3.0",
+        "queueworker/sansdaemon": "^1.2",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

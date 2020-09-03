@@ -4162,6 +4162,61 @@
         ]
     },
     {
+        "name": "queueworker/sansdaemon",
+        "version": "v1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/orobogenius/sansdaemon.git",
+            "reference": "66b5076edc7cd397f944fdbf6a0f2c2a15dc85ce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/orobogenius/sansdaemon/zipball/66b5076edc7cd397f944fdbf6a0f2c2a15dc85ce",
+            "reference": "66b5076edc7cd397f944fdbf6a0f2c2a15dc85ce",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "^6.0|^7.0",
+            "php": "^7.2"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.1",
+            "orchestra/testbench": "^4.0",
+            "phpunit/phpunit": "^8"
+        },
+        "time": "2020-03-10T20:41:18+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Queueworker\\SansDaemon\\SansDaemonServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Queueworker\\SansDaemon\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Lucky Ozoka",
+                "email": "orobolucky@gmail.com"
+            }
+        ],
+        "description": "Batch process Laravel Queue without a daemon; Processes queue jobs and kills the process",
+        "keywords": [
+            "laravel",
+            "queue"
+        ]
+    },
+    {
         "name": "ralouphie/getallheaders",
         "version": "3.0.3",
         "version_normalized": "3.0.3.0",

@@ -34,9 +34,9 @@ class Kernel extends ConsoleKernel
             ])->dispatch();
         })
             ->daily();
-        
+
         $schedule->job(new ReIndexWordsUser())->everyFiveMinutes();
-        $schedule->command('queue:work --tries=3')->everyMinute()->withoutOverlapping();
+        $schedule->command('queue:work --tries=3  --sansdaemon')->everyMinute()->withoutOverlapping();
     }
 
     /**
