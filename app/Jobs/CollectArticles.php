@@ -16,6 +16,9 @@ class CollectArticles implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /**
+     * @var Site
+     */
     private $site;
 
     /**
@@ -47,14 +50,7 @@ class CollectArticles implements ShouldQueue
         $urls = array_diff($urls, $existing);
 
         foreach($urls as $url) {
-
-            $exists = DB::table('texts')
-                ->where('direct_link', $url)
-                ->count('*');
-
-            if(!$exists) {
-                ProcessArticle::dispatch($scraper, $url);
-            }
+            ProcessArticle::dispatch($scraper, $url);
         }
     }
 }
