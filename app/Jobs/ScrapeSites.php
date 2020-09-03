@@ -33,5 +33,6 @@ class ScrapeSites implements ShouldQueue
         foreach($sites as $site) {
             CollectArticles::dispatch($site);
         }
+        ReIndexWordsText::dispatch();
     }
 }
