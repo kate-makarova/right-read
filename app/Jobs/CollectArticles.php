@@ -40,6 +40,12 @@ class CollectArticles implements ShouldQueue
         /** @var Scraper $scraper */
         $scraper = new $scraperName($this->site, $textTagService);
         $urls = $scraper->collectLinks();
+        array_unique($urls);
+        $existing = DB::table('texts')
+            ->whereIn('direct_link', $urls)
+            ->pluck('direct_link')->toArray();
+        $urls = array_diff($urls, $existing);
+
         foreach($urls as $url) {
 
             $exists = DB::table('texts')
