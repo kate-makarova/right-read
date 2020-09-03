@@ -26,7 +26,10 @@ class ReIndexWordsText implements ShouldQueue
            where word_text.indexed = 0
            group by word_text.text_id, word_user.user_id
                 ) r
-         SET known_words = known
+         JOIN texts t on text_user.text_id = t.id
+         SET
+             known_words = r.known,
+             percentage = (r.known / t.total_words) * 100
          WHERE text_user.text_id = r.text_id
          and text_user.user_id = r.user_id');
 
