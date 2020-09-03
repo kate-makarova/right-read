@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Queueworker\SansDaemon\SansDaemonServiceProvider::class,
 
     ],
 
