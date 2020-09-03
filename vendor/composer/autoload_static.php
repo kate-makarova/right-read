@@ -97,10 +97,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
-        'Q' => 
-        array (
-            'Queueworker\\SansDaemon\\' => 23,
-        ),
         'P' => 
         array (
             'Psy\\' => 4,
@@ -349,10 +345,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Ramsey\\Collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
-        ),
-        'Queueworker\\SansDaemon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/queueworker/sansdaemon/src',
         ),
         'Psy\\' => 
         array (
@@ -809,6 +801,7 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Doctrine\\DBAL\\Driver\\AbstractPostgreSQLDriver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractPostgreSQLDriver.php',
         'Doctrine\\DBAL\\Driver\\AbstractSQLAnywhereDriver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLAnywhereDriver.php',
         'Doctrine\\DBAL\\Driver\\AbstractSQLServerDriver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLServerDriver.php',
+        'Doctrine\\DBAL\\Driver\\AbstractSQLServerDriver\\PortWithoutHost' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLServerDriver/PortWithoutHost.php',
         'Doctrine\\DBAL\\Driver\\AbstractSQLiteDriver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLiteDriver.php',
         'Doctrine\\DBAL\\Driver\\Connection' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Connection.php',
         'Doctrine\\DBAL\\Driver\\DriverException' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/DriverException.php',
@@ -819,6 +812,7 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Doctrine\\DBAL\\Driver\\IBMDB2\\DB2Driver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Driver.php',
         'Doctrine\\DBAL\\Driver\\IBMDB2\\DB2Exception' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Exception.php',
         'Doctrine\\DBAL\\Driver\\IBMDB2\\DB2Statement' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Statement.php',
+        'Doctrine\\DBAL\\Driver\\IBMDB2\\DataSourceName' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DataSourceName.php',
         'Doctrine\\DBAL\\Driver\\Mysqli\\Driver' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/Driver.php',
         'Doctrine\\DBAL\\Driver\\Mysqli\\MysqliConnection' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/MysqliConnection.php',
         'Doctrine\\DBAL\\Driver\\Mysqli\\MysqliException' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/MysqliException.php',
@@ -890,6 +884,9 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Doctrine\\DBAL\\FetchMode' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/FetchMode.php',
         'Doctrine\\DBAL\\Id\\TableGenerator' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Id/TableGenerator.php',
         'Doctrine\\DBAL\\Id\\TableGeneratorSchemaVisitor' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Id/TableGeneratorSchemaVisitor.php',
+        'Doctrine\\DBAL\\Internal\\DependencyOrderCalculator' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Internal/DependencyOrderCalculator.php',
+        'Doctrine\\DBAL\\Internal\\DependencyOrderEdge' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Internal/DependencyOrderEdge.php',
+        'Doctrine\\DBAL\\Internal\\DependencyOrderNode' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Internal/DependencyOrderNode.php',
         'Doctrine\\DBAL\\LockMode' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/LockMode.php',
         'Doctrine\\DBAL\\Logging\\DebugStack' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Logging/DebugStack.php',
         'Doctrine\\DBAL\\Logging\\EchoSQLLogger' => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL/Logging/EchoSQLLogger.php',
@@ -4384,10 +4381,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
-        'Queueworker\\SansDaemon\\Console\\WorkCommand' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/Console/WorkCommand.php',
-        'Queueworker\\SansDaemon\\SansDaemonServiceProvider' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/SansDaemonServiceProvider.php',
-        'Queueworker\\SansDaemon\\SansDaemonWorker' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/SansDaemonWorker.php',
-        'Queueworker\\SansDaemon\\Traits\\SansDaemonWorkerTrait' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/Traits/SansDaemonWorkerTrait.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',
