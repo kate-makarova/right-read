@@ -26,7 +26,7 @@ class ReIndexWordsText implements ShouldQueue
            where word_text.indexed = 0
            group by word_text.text_id, word_user.user_id
                 ) r
-         SET known_words = known_words
+         SET known_words = known
          WHERE text_user.text_id = r.text_id
          and text_user.user_id = r.user_id');
 
