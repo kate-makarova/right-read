@@ -29,6 +29,9 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->job(new ScrapeSites())->daily();
         $schedule->job(new ReIndexWordsUser())->everyFiveMinutes();
+        $schedule->command('queue:work --tries=3')
+            ->cron('* * * * * *')
+            ->withoutOverlapping();
     }
 
     /**
