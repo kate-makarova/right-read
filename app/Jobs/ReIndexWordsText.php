@@ -33,9 +33,9 @@ class ReIndexWordsText implements ShouldQueue
          WHERE text_user.text_id = r.text_id
          and text_user.user_id = r.user_id');
 
-//        DB::table('word_text')
-//            ->where('indexed', 0)
-//            ->update(['indexed' => 1]);
+        DB::table('word_text')
+            ->where('indexed', 0)
+            ->update(['indexed' => 1]);
     }
 
 }

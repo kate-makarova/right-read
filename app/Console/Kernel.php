@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(new ScrapeSites())->dailyAt('01:00');
         $schedule->job(new ReIndexWordsText())->dailyAt('03:00');
         $schedule->job(new ReIndexWordsUser())->everyFiveMinutes();
-        $schedule->command('queue:work --tries=3 --sansdaemon')->everyMinute()->withoutOverlapping();
+        $schedule->command('queue:work --tries=3 --once')->everyMinute()->withoutOverlapping();
     }
 
     /**
