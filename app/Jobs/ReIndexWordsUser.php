@@ -29,7 +29,7 @@ class ReIndexWordsUser implements ShouldQueue
             ) r
             JOIN texts t on text_user.text_id = t.id
             SET known_words = known_words + r.known,
-                percentage = (r.known / t.total_words) * 100
+                percentage = ((known_words + r.known) / t.total_words) * 100
             WHERE text_user.text_id = r.text_id and text_user.user_id = r.user_id');
 
         DB::table('word_user')
