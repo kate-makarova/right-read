@@ -84,12 +84,12 @@ abstract class Scraper
             from word_text
                  join words w on word_text.word = w.word
                  join word_user on w.word = word_text.word
-              and word_text.indexed = 0
-              and word_text.text_id = '.$id.'
+              where word_text.indexed = 0 and word_text.text_id = '.$id.'
                group by word_text.text_id, word_user.user_id
                 ) r
          SET known_words = known_words + r.known
-         WHERE text_user.text_id = r.text_id and text_user.user_id = r.user_id');
+         WHERE text_user.text_id = r.text_id
+         and text_user.user_id = r.user_id');
 
         DB::table('word_text')
             ->where('indexed', 0)

@@ -24,7 +24,7 @@ class ReIndexWordsUser implements ShouldQueue
                  from word_user
                 join words w on word_user.word = w.word
                   join word_text wt on w.word = wt.word
-                and word_user.indexed = 0
+                where word_user.indexed = 0
                group by wt.text_id, user_id
             ) r
             SET known_words = known_words + r.known
