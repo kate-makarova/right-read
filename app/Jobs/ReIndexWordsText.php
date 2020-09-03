@@ -22,10 +22,9 @@ class ReIndexWordsText implements ShouldQueue
         (
            select word_text.text_id, word_user.user_id, count(word_text.word) as known
             from word_text
-                 join words w on word_text.word = w.word
-                 join word_user on w.word = word_text.word
-              where word_text.indexed = 0
-               group by word_text.text_id, word_user.user_id
+            join word_user on word_text.word = word_user.word
+           where word_text.indexed = 0
+           group by word_text.text_id, word_user.user_id
                 ) r
          SET known_words = known_words
          WHERE text_user.text_id = r.text_id
