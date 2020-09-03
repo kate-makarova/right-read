@@ -13,7 +13,7 @@ class TextController extends Controller
     {
         $data = Db::table('texts')
             ->join('text_user', 'text_user.text_id = texts.id')
-            ->where('text_user.id', Auth::user()->id)
+            ->where('text_user.user_id', Auth::user()->id)
             ->select(
                 'texts.text_title',
                 'texts.site_name',
