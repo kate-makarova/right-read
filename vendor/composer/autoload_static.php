@@ -97,10 +97,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
-        'Q' => 
-        array (
-            'Queueworker\\SansDaemon\\' => 23,
-        ),
         'P' => 
         array (
             'Psy\\' => 4,
@@ -349,10 +345,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Ramsey\\Collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
-        ),
-        'Queueworker\\SansDaemon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/queueworker/sansdaemon/src',
         ),
         'Psy\\' => 
         array (
@@ -4384,10 +4376,6 @@ class ComposerStaticInit46db5c69a6cbc3bcb4a1f09507433edc
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
-        'Queueworker\\SansDaemon\\Console\\WorkCommand' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/Console/WorkCommand.php',
-        'Queueworker\\SansDaemon\\SansDaemonServiceProvider' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/SansDaemonServiceProvider.php',
-        'Queueworker\\SansDaemon\\SansDaemonWorker' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/SansDaemonWorker.php',
-        'Queueworker\\SansDaemon\\Traits\\SansDaemonWorkerTrait' => __DIR__ . '/..' . '/queueworker/sansdaemon/src/Traits/SansDaemonWorkerTrait.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',
