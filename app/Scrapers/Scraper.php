@@ -26,15 +26,17 @@ abstract class Scraper
 
     public function collectLinks(): array
     {
-        $category = json_decode($this->site->config);
-        $dom = new Dom;
-        $dom->loadFromUrl($category->link);
-
-        $titles = $dom->find($category->selector);
+        $categories = json_decode($this->site->config);
         $urls = [];
+        foreach($categories as $category) {
+            $dom = new Dom;
+            $dom->loadFromUrl($category->link);
 
-        foreach($titles as $title) {
-            $urls[] = $this->site->index_link.'/'.$title->href;
+            $titles = $dom->find($category->selector);
+
+            foreach ($titles as $title) {
+                $urls[] = $this->site->index_link . '/' . $title->href;
+            }
         }
         return $urls;
     }
@@ -74,9 +76,6 @@ abstract class Scraper
                 ['word' => $uniqueWord, 'text_id' => $id, 'indexed' => 0]
             );
         }
-        DB::statement('INSERT INTO text_user
-                       (text_id, user_id, known_words)
-                        SELECT '.$id.', id, 0 from users');
 
         DB::statement('UPDATE text_user
                    JOIN
@@ -86,9 +85,15 @@ abstract class Scraper
                  join words w on word_text.word = w.word
                  join word_user on w.word = word_text.word
               and word_text.indexed = 0
+              and word_text.text_id = '.$id.'
                group by word_text.text_id, word_user.user_id
                 ) r
          SET known_words = known_words + r.known
          WHERE text_user.text_id = r.text_id and text_user.user_id = r.user_id');
+
+        DB::table('word_text')
+            ->where('indexed', 0)
+            ->where('text_id', $id)
+            ->update(['indexed' => 1]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Http\Services\TextTagService;
 use App\Site;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -32,8 +31,7 @@ class ScrapeSites implements ShouldQueue
         $sites = Site::all();
 
         foreach($sites as $site) {
-            $job = new CollectArticles($site);
-            $job::dispatch();
+            CollectArticles::dispatch($site);
         }
     }
 }

@@ -21,7 +21,7 @@ class CollectArticles implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param Site $site
      */
     public function __construct(Site $site)
     {
@@ -47,8 +47,7 @@ class CollectArticles implements ShouldQueue
                 ->count('*');
 
             if(!$exists) {
-                $job = new ProcessArticle($scraper, $url);
-                $job::dispatch();
+                ProcessArticle::dispatch($scraper, $url);
             }
         }
     }
