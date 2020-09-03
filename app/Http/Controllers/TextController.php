@@ -16,10 +16,10 @@ class TextController extends Controller
             ->where('text_user.id', Auth::user()->id)
             ->select(
                 'texts.text_title',
-                'texts_site_name',
+                'texts.site_name',
                 'texts.direct_link',
             'texts.publication_date',
-            'texts_total_words',
+            'texts.total_words',
             'text_user.percentage',
             'text_user.known_words')
             ->orderBy('text_user.percentage', 'desc')

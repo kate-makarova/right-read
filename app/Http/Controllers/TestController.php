@@ -13,7 +13,7 @@ class TestController extends Controller
 {
     public function test()
     {
-        ReIndexWordsText::dispatch();
+        ReIndexWordsText::dispatchNow();
        // return response()->json(['This thing does' => 'nothing']);
     }
 }
