@@ -12,7 +12,7 @@ class TextController extends Controller
     public function index()
     {
         $data = Db::table('texts')
-            ->join('text_user', 'text_user.text_id = texts.id')
+            ->join('text_user', 'text_user.text_id', '=', 'texts.id')
             ->where('text_user.user_id', Auth::user()->id)
             ->select(
                 'texts.text_title',
