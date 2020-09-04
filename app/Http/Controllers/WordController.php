@@ -36,4 +36,20 @@ class WordController extends Controller
 
         return response()->json(['status' => $status]);
     }
+
+    public function known($words)
+    {
+        $known = DB::table('word_user')
+            ->whereIn('word', $words)
+            ->where('user_id', $user = Auth::user()->id)
+            ->pluck('word')->toArray();
+        $result  = [];
+        foreach($words as $word) {
+            if (in_array($word, $known))
+                $result[$word] = 1;
+            else
+                $result[$word] = 0;
+        }
+        return $result;
+    }
 }

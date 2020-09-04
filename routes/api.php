@@ -24,6 +24,7 @@ Route::get('static/{name}', 'StaticController@static');
 
 Route::group(['middleware' => 'jwt.auth', 'prefix' => 'word'], function () {
     Route::get('add/{word}', 'WordController@add');
+    Route::post('words/known', 'WordController@known');
 });
 
 Route::post('auth/register', 'AuthController@register');
@@ -36,7 +37,6 @@ Route::group(['middleware' => 'jwt.auth'], function(){
 Route::group(['middleware' => 'jwt.refresh'], function(){
     Route::get('auth/refresh', 'AuthController@refresh');
 });
-
 
 Route::get('texts', 'TextController@index');
 Route::group(['prefix' => 'text'], function () {
